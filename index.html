@@ -1,0 +1,380 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tamer Fathalla Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout concept: navy boardroom hero with an arched portrait, then a clean light-on-navy editorial scroll: experience ledger, project gallery with photo slots, credentials, contact. */
+:root{
+  --bg:#F4F4F5; --bg2:#EAEAEC; --surface:#FFFFFF; --fg:#1A191B; --muted:#5E5C61;
+  --steel:#6B6970; --accent:#D91F26; --sand:#D91F26; --line:#D9D8DC;
+  --hero-bg:#161517; --hero-fg:#F2F1F2; --hero-muted:#A9A7AD; --hero-accent:#E5343A;
+  --font-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --font-body:'Manrope','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101011; --bg2:#171618; --surface:#1D1C1E; --fg:#EEEDEE; --muted:#A3A1A7;
+  --steel:#9C9AA2; --accent:#F0484E; --sand:#F0484E; --line:#2E2D31;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101011; --bg2:#171618; --surface:#1D1C1E; --fg:#EEEDEE; --muted:#A3A1A7;
+  --steel:#9C9AA2; --accent:#F0484E; --sand:#F0484E; --line:#2E2D31;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 var(--font-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.08}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* full-bleed bands: bands go outside body padding using negative margins */
+.band{margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--hero-bg) 92%,transparent);backdrop-filter:blur(10px);color:var(--hero-fg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--hero-bg)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font:800 18px var(--font-display);letter-spacing:.02em;text-decoration:none;display:flex;gap:10px;align-items:center}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--hero-accent);color:#fff;display:grid;place-items:center;font-style:normal;font-size:14px}
+.links{display:flex;gap:22px;font-size:14px;font-weight:600;flex-wrap:wrap;justify-content:flex-end}
+.links a{text-decoration:none;color:var(--hero-muted);transition:color .2s}
+.links a:hover{color:var(--hero-fg)}
+@media(max-width:640px){.links a:nth-child(n+4){display:none}}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-fg);position:relative;overflow:hidden;padding-block:56px 72px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 85% 20%,rgba(217,31,38,.30),transparent 70%),
+  radial-gradient(500px 360px at 0% 100%,rgba(190,150,100,.12),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{font:700 12px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--hero-accent);display:flex;gap:12px;align-items:center}
+.eyebrow::before{content:"";width:32px;height:2px;background:currentColor}
+.hero h1{font-size:clamp(44px,7.4vw,92px);font-weight:800;margin-top:18px}
+.hero h1 span{display:block;color:var(--hero-accent)}
+.role{margin-top:22px;font:600 clamp(16px,2vw,20px)/1.4 var(--font-body);color:var(--hero-fg)}
+.lede{margin-top:14px;max-width:54ch;color:var(--hero-muted)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;transition:transform .2s,background .2s,border-color .2s}
+.btn.primary{background:var(--hero-accent);color:#fff}
+.btn.primary:hover{transform:translateY(-2px)}
+.btn.ghost{border-color:rgba(238,241,248,.35);color:var(--hero-fg)}
+.btn.ghost:hover{border-color:var(--hero-accent);color:var(--hero-accent)}
+.portrait{position:relative;justify-self:center;width:min(100%,400px)}
+.portrait .arch{position:relative;border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:4/5;background:#232124;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+.portrait::before{content:"";position:absolute;inset:-14px;border:1.5px solid rgba(229,52,58,.65);border-radius:214px 214px 34px 34px;animation:ring 6s ease-in-out infinite}
+.portrait .tag{position:absolute;left:-18px;bottom:28px;background:var(--surface);color:var(--fg);padding:12px 16px;border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.3);font-size:13px;line-height:1.35;animation:float 5s ease-in-out infinite}
+.portrait .tag b{display:block;font:800 22px var(--font-display);color:var(--accent)}
+@keyframes ring{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.025);opacity:.45}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero .in{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .in:nth-child(2){animation-delay:.1s}.hero .in:nth-child(3){animation-delay:.2s}
+.hero .in:nth-child(4){animation-delay:.3s}.hero .in:nth-child(5){animation-delay:.4s}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.portrait{order:-1;width:min(78%,320px)}.portrait .tag{left:-6px}}
+
+/* stats */
+.stats{background:var(--hero-bg);color:var(--hero-fg);border-top:1px solid rgba(238,241,248,.1);padding-block:30px}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat b{display:block;font:800 clamp(30px,4vw,46px) var(--font-display);color:var(--hero-accent);font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:13px;color:var(--hero-muted);display:block;margin-top:8px}
+@media(max-width:640px){.stats .wrap{grid-template-columns:repeat(2,1fr)}}
+
+/* sections */
+section{padding-block:84px}
+.kicker{font:700 12px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.sec-title{font-size:clamp(30px,4.4vw,52px);font-weight:800;margin-top:10px;max-width:20ch}
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.about p{color:var(--muted);font-size:17px}
+.about p+p{margin-top:16px}
+.about p strong{color:var(--fg)}
+@media(max-width:860px){.about{grid-template-columns:1fr;gap:24px}}
+
+.alt{background:var(--bg2)}
+.ledger{margin-top:44px;display:grid;gap:18px}
+.role-card{display:grid;grid-template-columns:200px 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px}
+.role-card h3{font-size:22px}
+.role-card .org{color:var(--steel);font-weight:700;font-size:14px;margin-top:6px}
+.role-card ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted)}
+.role-card li{padding-left:22px;position:relative}
+.role-card li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--sand)}
+@media(max-width:760px){.role-card{grid-template-columns:1fr;gap:16px;padding:24px}}
+
+.advisory{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:14px;transition:transform .2s,border-color .2s}
+.chip:hover{transform:translateY(-3px);border-color:var(--accent)}
+.adv-label{margin-top:36px;font-weight:700;color:var(--steel);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+
+/* projects */
+.proj-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.proj-head p{max-width:42ch;color:var(--muted)}
+.projects{margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.proj{position:relative;border-radius:22px;overflow:hidden;background:var(--hero-bg);color:var(--hero-fg);min-height:340px;display:flex;align-items:flex-end;isolation:isolate}
+.proj .ph{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(160deg,#2A282C,#161517 70%);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.proj .ph svg{position:absolute;right:-10px;bottom:0;width:70%;opacity:.5}
+.proj img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .ph,.proj:hover img.photo{transform:scale(1.06)}
+.proj::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(12,11,13,.92),rgba(12,11,13,.05) 65%)}
+.proj .body{padding:26px;width:100%}
+.proj .num{font:700 12px var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--hero-accent)}
+.proj h3{font-size:clamp(24px,3vw,32px);margin-top:8px}
+.proj p{margin-top:8px;color:var(--hero-muted);font-size:15px;max-width:40ch}
+.proj.wide{grid-column:1/-1;min-height:420px}
+.proj.tall{grid-row:span 2}
+.proj.tall img.photo{object-position:50% 25%}
+.proj img.photo{filter:saturate(1.05)}
+@media(max-width:760px){.projects{grid-template-columns:1fr}.proj,.proj.wide{min-height:300px}.proj.tall{grid-row:auto;min-height:420px}}
+.office{margin-top:44px;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/8;background:#161517}
+.office img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.office:hover img{transform:scale(1.04)}
+.office figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 26px;color:#F2F1F2;font-weight:600;font-size:14px;background:linear-gradient(to top,rgba(12,11,13,.85),transparent)}
+@media(max-width:640px){.office{aspect-ratio:4/3}}
+/* end additions */
+
+/* credentials */
+.cred{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px}
+.panel h3{font-size:22px;margin-bottom:18px}
+.panel ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.panel li{display:grid;grid-template-columns:28px 1fr;gap:10px;color:var(--muted)}
+.panel li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sand);margin-top:.55em;justify-self:center}
+.panel li b{color:var(--fg)}
+@media(max-width:760px){.cred{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--hero-bg);color:var(--hero-fg);padding-block:88px;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 360px at 90% 0%,rgba(217,31,38,.30),transparent 70%)}
+.contact .wrap{position:relative}
+.contact h2{font-size:clamp(34px,6vw,72px);font-weight:800;max-width:14ch}
+.contact h2 span{color:var(--hero-accent)}
+.cards{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cc{border:1px solid rgba(238,241,248,.18);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cc small{font:700 11px var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--hero-accent)}
+.cc .v{font-weight:600;font-size:17px;overflow-wrap:anywhere;user-select:all}
+.cc button{align-self:flex-start;margin-top:8px;background:none;border:1px solid rgba(238,241,248,.3);color:var(--hero-fg);padding:6px 14px;border-radius:999px;font:600 13px var(--font-body);cursor:pointer;transition:border-color .2s,color .2s}
+.cc button:hover{border-color:var(--hero-accent);color:var(--hero-accent)}
+@media(max-width:760px){.cards{grid-template-columns:1fr}}
+footer{background:var(--hero-bg);color:var(--hero-muted);font-size:13px;padding-block:22px;border-top:1px solid rgba(238,241,248,.1)}
+
+/* scroll reveal: starts from visible resting state when unsupported */
+@supports (animation-timeline: view()){
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+  @keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+
+<header class="nav band">
+  <div class="wrap">
+    <a class="logo" href="#top"><i>E</i>EDGE Business Consultant</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#credentials">Credentials</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero band">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow in">Investment consultancy · Alexandria, Egypt</div>
+      <h1 class="in">Tamer<span>Fathalla</span></h1>
+      <p class="role in">Chairman of the Board and CEO, EDGE Business Consultant</p>
+      <p class="lede in">Investment consultant and business development leader. About 20 years of market analysis, feasibility work and investor relations across Egyptian real estate and commercial projects.</p>
+      <div class="cta in">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="portrait in">
+      <div class="arch"><img src="assets/tamer.jpg" alt="Tamer Fathalla at his desk in a dark suit and striped tie" width="858" height="852"></div>
+      <div class="tag"><b>20+</b>years in investment<br>consultancy</div>
+    </div>
+  </div>
+</div>
+
+<div class="stats band">
+  <div class="wrap">
+    <div class="stat"><b data-n="20" data-suffix="+">20+</b><span>Years of experience</span></div>
+    <div class="stat"><b data-n="5">5</b><span>Advisory mandates</span></div>
+    <div class="stat"><b data-n="5">5</b><span>Featured developments</span></div>
+    <div class="stat"><b data-n="2">2</b><span>Degrees in law and arbitration</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="rv">
+      <div class="kicker">About</div>
+      <h2 class="sec-title">Opportunities, assessed and delivered</h2>
+    </div>
+    <div class="rv">
+      <p>Tamer Fathalla is a business leader with deep experience in investment consultancy, strategic leadership and investor relations. He has a firm grasp of the Egyptian investment landscape and focuses on finding viable opportunities, reading market conditions and building investment strategies.</p>
+      <p>As <strong>Chairman of the Board at EDGE Business Consultant</strong>, he sets the company's direction across commercial and real estate investment, feasibility assessment, market expansion and investor engagement. He also serves as <strong>Secretary of Development and Investor Relations at Hamat El Watan Party in Alexandria</strong>.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <figure class="office rv" style="margin-left:0;margin-right:0"><img src="assets/office.jpg" alt="EDGE Business Consultant reception with the company logo on a dark stone wall" loading="lazy" width="1500" height="849"><figcaption>EDGE Business Consultant, Smouha, Alexandria</figcaption></figure>
+  </div>
+</section>
+
+<section id="experience" class="alt band">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker">Experience</div>
+      <h2 class="sec-title">Leadership and investor relations</h2>
+    </div>
+    <div class="ledger">
+      <article class="role-card rv">
+        <div><h3>CEO</h3><div class="org">EDGE Business Consultant</div></div>
+        <ul>
+          <li>Strategic leadership and oversight of investment consultancy activities.</li>
+          <li>Identification and assessment of investment opportunities across multiple sectors.</li>
+          <li>Supervision of market research, feasibility studies and investment planning.</li>
+          <li>Strategic evaluation of commercial and real estate development projects.</li>
+          <li>Support for investment decisions through market analysis and risk assessment.</li>
+          <li>Expansion into Alexandria, Cairo and other Egyptian markets.</li>
+          <li>Building strategic relationships with investors and business partners.</li>
+        </ul>
+      </article>
+      <article class="role-card rv">
+        <div><h3>Investor Relations</h3><div class="org">Hamat El Watan Party, Alexandria</div></div>
+        <ul>
+          <li>Supporting economic development initiatives.</li>
+          <li>Facilitating communication and engagement with investors.</li>
+          <li>Strengthening relationships between the business community and relevant stakeholders.</li>
+          <li>Contributing to initiatives that encourage investment and local development.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="adv-label rv">Investment advisory</div>
+    <div class="advisory rv">
+      <span class="chip">Alexandria Governorate</span>
+      <span class="chip">International Park Investors</span>
+      <span class="chip">Marsa Matrouh</span>
+      <span class="chip">Bar Association of Egypt</span>
+      <span class="chip">Arab Lawyers Union</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="proj-head rv">
+      <div>
+        <div class="kicker">Projects</div>
+        <h2 class="sec-title">Developments promoted by EDGE</h2>
+      </div>
+      <p>Commercial units, retail stores and investment opportunities across major developments.</p>
+    </div>
+    <div class="projects">
+      <article class="proj rv tall" data-slot="mirage-hotel">
+        <img class="photo" src="assets/mirage.jpg" alt="Mirage Hotel tower lit up at dusk" loading="lazy">
+        <div class="body"><div class="num">Hospitality</div><h3>Mirage Hotel</h3><p>Promotion of the project to investors and partners.</p></div>
+      </article>
+      <article class="proj rv " data-slot="gleem-bay">
+        <img class="photo" src="assets/gleem.jpg" alt="Aerial night view of the Gleem Bay waterfront" loading="lazy">
+        <div class="body"><div class="num">Real estate</div><h3>Gleem Bay</h3><p>Marketing and promotion of units and investment opportunities.</p></div>
+      </article>
+      <article class="proj rv " data-slot="latino">
+        <img class="photo" src="assets/latino.jpg" alt="Latino waterfront restaurant at dusk" loading="lazy">
+        <div class="body"><div class="num">Real estate</div><h3>Latino</h3><p>Marketing and promotion of units and investment opportunities.</p></div>
+      </article>
+      <article class="proj rv wide" data-slot="arc-mall">
+        <img class="photo" src="assets/arc.jpg" alt="Rendering of ARC Mall retail terrace and surrounding residential buildings" loading="lazy">
+        <div class="body"><div class="num">Commercial · Alex West</div><h3>ARC Mall</h3><p>Promotion of retail stores and commercial units.</p></div>
+      </article>
+      <article class="proj rv wide" data-slot="matajer">
+        <img class="photo" src="assets/matajer.jpg" alt="Glass-fronted commercial building" loading="lazy">
+        <div class="body"><div class="num">Commercial</div><h3>Matajer</h3><p>Commercial units and investment opportunities.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="credentials" class="alt band">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker">Credentials</div>
+      <h2 class="sec-title">Education and achievements</h2>
+    </div>
+    <div class="cred">
+      <div class="panel rv">
+        <h3>Education</h3>
+        <ul>
+          <li><span><b>Bachelor of Laws (LL.B.)</b><br>Alexandria University</span></li>
+          <li><span><b>Diploma in International Arbitration</b><br>Alexandria University</span></li>
+        </ul>
+      </div>
+      <div class="panel rv">
+        <h3>Achievements</h3>
+        <ul>
+          <li><span>Established investment partnerships with numerous companies across multiple sectors.</span></li>
+          <li><span>Successfully marketed several major real estate and commercial projects.</span></li>
+          <li><span>Promoted commercial units, retail stores and investment opportunities in major developments.</span></li>
+          <li><span>Expanded EDGE's network of investors, developers and strategic business partners.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact band" id="contact">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--hero-accent)">Contact</div>
+    <h2 class="rv" style="margin-top:12px">Let's discuss your <span>next investment</span></h2>
+    <div class="cards rv">
+      <div class="cc"><small>Email</small><span class="v" id="v-mail">ceo@edge-bc.com</span><button type="button" data-copy="v-mail">Copy</button></div>
+      <div class="cc"><small>Phone</small><span class="v" id="v-tel">01228755000</span><button type="button" data-copy="v-tel">Copy</button></div>
+      <div class="cc"><small>Office</small><span class="v">Building 17, Green Towers, Smouha, Alexandria</span></div>
+    </div>
+  </div>
+</div>
+</main>
+<footer class="band"><div class="wrap">© Tamer Fathalla · EDGE Business Consultant</div></footer>
+
+<script>
+(function(){
+  // count-up for stats (final value is already in the markup)
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stats = document.querySelectorAll('.stat b');
+  function run(el){
+    var n = +el.dataset.n, suf = el.dataset.suffix || '', t0 = null;
+    function step(t){
+      if(t0===null) t0=t;
+      var p = Math.min(1,(t-t0)/1200), e = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(n*e)+(p===1?suf:'');
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target);} });
+    },{threshold:.6});
+    stats.forEach(function(s){ io.observe(s); });
+  }
+  // copy buttons
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el = document.getElementById(b.dataset.copy), txt = el.textContent;
+      function done(){ b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy'; },1600); }
+      function fallback(){
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+        b.textContent='Press Ctrl+C'; setTimeout(function(){ b.textContent='Copy'; },2200);
+      }
+      try{ navigator.clipboard.writeText(txt).then(done,fallback); }catch(e){ fallback(); }
+    });
+  });
+})();
+</script>
+
+</body></html>
