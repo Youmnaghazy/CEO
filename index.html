@@ -43,7 +43,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .links{display:flex;gap:22px;font-size:14px;font-weight:600;flex-wrap:wrap;justify-content:flex-end}
 .links a{text-decoration:none;color:var(--hero-muted);transition:color .2s}
 .links a:hover{color:var(--hero-fg)}
-@media(max-width:640px){.links a:nth-child(n+4){display:none}}
+.menu-toggle{display:none}
+@media(max-width:640px){
+  .nav .wrap{position:relative;gap:12px}
+  .logo{font-size:16px;gap:8px}
+  .menu-toggle{width:42px;height:42px;flex:0 0 42px;display:grid;place-content:center;gap:5px;border:1px solid rgba(238,241,248,.25);border-radius:10px;background:transparent;color:var(--hero-fg);cursor:pointer}
+  .menu-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s,opacity .2s}
+  .menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(7px) rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
+  .links{display:none;position:absolute;top:calc(100% + 2px);left:0;right:0;z-index:21;flex-direction:column;gap:0;padding:8px;background:var(--hero-bg);border:1px solid rgba(238,241,248,.16);border-radius:12px;box-shadow:0 16px 32px rgba(0,0,0,.28)}
+  .links.is-open{display:flex}
+  .links a{padding:12px;border-radius:7px}
+  .links a:hover{background:rgba(255,255,255,.07)}
+}
 
 /* hero */
 .hero{background:var(--hero-bg);color:var(--hero-fg);position:relative;overflow:hidden;padding-block:56px 72px}
@@ -174,7 +187,10 @@ footer{background:var(--hero-bg);color:var(--hero-muted);font-size:13px;padding-
 <header class="nav band">
   <div class="wrap">
     <a class="logo" href="#top"><i>E</i>EDGE Business Consultant</a>
-    <nav class="links" aria-label="Sections">
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="primary-navigation" aria-label="Sections">
       <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#credentials">Credentials</a><a href="#contact">Contact</a>
     </nav>
   </div>
@@ -342,6 +358,39 @@ footer{background:var(--hero-bg);color:var(--hero-muted);font-size:13px;padding-
 
 <script>
 (function(){
+  // Mobile navigation dropdown
+  var menuToggle = document.querySelector('.menu-toggle');
+  var navigation = document.getElementById('primary-navigation');
+  function closeMenu(){
+    navigation.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded','false');
+    menuToggle.setAttribute('aria-label','Open navigation menu');
+  }
+  menuToggle.addEventListener('click',function(){
+    var isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    if(isOpen){
+      closeMenu();
+    }else{
+      navigation.classList.add('is-open');
+      menuToggle.setAttribute('aria-expanded','true');
+      menuToggle.setAttribute('aria-label','Close navigation menu');
+    }
+  });
+  navigation.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click',closeMenu);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true'){
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
+  document.addEventListener('click',function(e){
+    if(menuToggle.getAttribute('aria-expanded') === 'true' && !e.target.closest('.nav')){
+      closeMenu();
+    }
+  });
+
   // count-up for stats (final value is already in the markup)
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var stats = document.querySelectorAll('.stat b');
